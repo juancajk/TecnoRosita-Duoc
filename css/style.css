@@ -6,10 +6,9 @@
 }
 
 body { 
-    background-color: #f4f6f8; 
+    background-color: #f3f4f6; 
     color: #2c3e50; 
 }
-
 
 header nav {
     background-color: #111827; 
@@ -33,7 +32,7 @@ header nav a {
 }
 
 header nav a:hover { 
-    color: #0d9488;
+    color: #0d9488; 
 }
 
 .formulario-container {
@@ -78,14 +77,12 @@ header nav a:hover {
     border-color: #0d9488; 
 }
 
-
 .error-msg {
     color: #dc2626;
     font-size: 0.85em;
     margin-top: 6px;
     font-weight: bold;
 }
-
 
 .btn-primary {
     display: block;
@@ -153,7 +150,6 @@ header nav a:hover {
     margin-bottom: 15px; 
 }
 
-
 .blog-card {
     border: 1px solid #e5e7eb;
     padding: 25px;
@@ -172,7 +168,6 @@ header nav a:hover {
     margin-bottom: 15px; 
     color: #4b5563; 
 }
-
 
 .alerta-stock {
     background-color: #fef2f2; 
