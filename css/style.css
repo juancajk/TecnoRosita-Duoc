@@ -1,0 +1,58 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+body { background-color: #f8f9fa; color: #212529; }
+
+header nav {
+    background-color: #1a1a1a; 
+    color: #e83e8c; 
+    padding: 18px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 3px solid #e83e8c;
+}
+header nav a { color: #f8f9fa; text-decoration: none; font-weight: 600; }
+header nav a:hover { color: #e83e8c; }
+
+.formulario-container {
+    background: #ffffff;
+    width: 100%; max-width: 550px;
+    margin: 50px auto; padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+.formulario-container h2 { margin-bottom: 20px; border-left: 4px solid #e83e8c; padding-left: 10px; }
+
+.form-group { margin-bottom: 18px; display: flex; flex-direction: column; }
+.form-group label { margin-bottom: 6px; font-weight: 600; font-size: 0.9em; }
+.form-group input, .form-group select, .form-group textarea {
+    padding: 12px; border: 1px solid #ced4da; border-radius: 6px;
+}
+
+
+.error-msg {
+    color: #dc3545;
+    font-size: 0.85em;
+    margin-top: 6px;
+    font-weight: bold;
+}
+
+.btn-primary {
+    background-color: #e83e8c; color: white;
+    border: none; padding: 12px; border-radius: 6px;
+    width: 100%; font-weight: bold; cursor: pointer; margin-top: 10px;
+}
+.btn-primary:hover { background-color: #d63384; }
+
+.admin-panel { max-width: 800px; margin: 40px auto; }
+.admin-table { width: 100%; border-collapse: collapse; background: white; }
+.admin-table th, .admin-table td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+.admin-table th { background-color: #1a1a1a; color: #e83e8c; }
+
+.video-container { margin-top: 25px; text-align: center; }
+.blog-detalle { max-width: 800px; margin: 40px auto; padding: 30px; background: white; border-radius: 8px; }
