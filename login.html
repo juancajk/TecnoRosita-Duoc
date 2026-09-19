@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - TecnoRosita</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <h2>TecnoRosita Store</h2>
+            <a href="registro.html">Crear Cuenta</a>
+        </nav>
+    </header>
+    <main>
+        <section class="formulario-container">
+            <h2>Iniciar Sesión</h2>
+            <form id="formLogin">
+                <div class="form-group">
+                    <label>Correo Electrónico:</label>
+                    <input type="email" id="loginCorreo" maxlength="100" required>
+                    <span class="error-msg" id="errorLoginCorreo"></span>
+                </div>
+                <div class="form-group">
+                    <label>Contraseña:</label>
+                    <input type="password" id="loginPass" required>
+                    <span class="error-msg" id="errorLoginPass"></span>
+                </div>
+                <button type="submit" class="btn-primary">Ingresar</button>
+            </form>
+        </section>
+    </main>
+    <script src="js/main.js"></script>
+</body>
+</html>

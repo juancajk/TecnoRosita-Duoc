@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro - TecnoRosita</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <h2>TecnoRosita Store</h2>
+            <a href="login.html">Iniciar Sesión</a>
+        </nav>
+    </header>
+    <main>
+        <section class="formulario-container">
+            <h2>Crear Cuenta de Usuario</h2>
+            <form id="formRegistro">
+                <div class="form-group">
+                    <label>RUN (Sin puntos ni guion):</label>
+                    <input type="text" id="run" required placeholder="Ej: 19011022K">
+                    <span class="error-msg" id="errorRun"></span>
+                </div>
+                <div class="form-group">
+                    <label>Nombre:</label>
+                    <input type="text" id="nombre" maxlength="50" required>
+                </div>
+                <div class="form-group">
+                    <label>Apellidos:</label>
+                    <input type="text" id="apellidos" maxlength="100" required>
+                </div>
+                <div class="form-group">
+                    <label>Correo Electrónico:</label>
+                    <input type="email" id="correo" maxlength="100" required>
+                    <span class="error-msg" id="errorCorreo"></span>
+                </div>
+                <div class="form-group">
+                    <label>Contraseña (4 a 10 caracteres):</label>
+                    <input type="password" id="password" required>
+                    <span class="error-msg" id="errorPass"></span>
+                </div>
+                <div class="form-group">
+                    <label>Tipo de Usuario:</label>
+                    <select id="tipoUsuario" required>
+                        <option value="cliente">Cliente</option>
+                        <option value="vendedor">Vendedor</option>
+                        <option value="admin">Administrador</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Región:</label>
+                    <select id="region" required>
+                        <option value="">Seleccione una región</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Comuna:</label>
+                    <select id="comuna" required>
+                        <option value="">Seleccione primero una región</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Dirección:</label>
+                    <input type="text" id="direccion" maxlength="300" required>
+                </div>
+                <button type="submit" class="btn-primary">Registrarse</button>
+            </form>
+        </section>
+    </main>
+    <script src="js/main.js"></script>
+</body>
+</html>
