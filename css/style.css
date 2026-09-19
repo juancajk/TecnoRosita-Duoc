@@ -56,3 +56,10 @@ header nav a:hover { color: #e83e8c; }
 
 .video-container { margin-top: 25px; text-align: center; }
 .blog-detalle { max-width: 800px; margin: 40px auto; padding: 30px; background: white; border-radius: 8px; }
+.blog-detalle h1 { color: #e83e8c; margin-bottom: 15px; }
+
+
+.alerta-stock {
+    background-color: #ffe6e6; 
+    color: #dc3545;
+}
