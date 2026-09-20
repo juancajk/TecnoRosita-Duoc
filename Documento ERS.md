@@ -1,45 +1,32 @@
 
-Documento ERS   
+Documento ERS (Especificación de Requisitos de Software) - TecnoRosita
+
 
 1. Introducción
-   
- Propósito: 
-  El propósito de este documento ERS es definir con precisión las especificaciones técnicas,
-  estéticas y funcionales para el desarrollo del e-commerce "TechStore Elite". Este documento está dirigido al equipo de
-  ingeniería y al cliente final, estableciendo los estándares para un producto de software de grado profesional y alto rendimiento.
-  
-  Ámbito del Sistema: 
-   El sistema, denominado "TechStore Elite", es una plataforma web orientada al nicho "Gamer Pro" y tecnologí
-   de alta gama.Beneficios y Objetivos: Proveer una experiencia de usuario inmersiva (Dark Mode con acentos dorados) que permita la exploración
-   de un catálogo dinámico.
-  
-  Lo que hará: 
-   El sistema gestionará un carrito de compras con persistencia de datos locales (localStorage),
-   validará interacciones de usuarios en tiempo real a través de formularios estrictos, y presentará el inventario mediante inyección
-   dinámica de JavaScript.Lo que no hará: En esta fase inicial, no procesará pasarelas de pago reales ni emitirá facturación tributaria.
+1.1. Propósito
+El propósito de este documento ERS es definir los requerimientos técnicos y funcionales para el desarrollo del frontend de la tienda online "TecnoRosita". Este documento establece las directrices para el equipo de desarrollo, asegurando la correcta implementación de la interfaz de usuario, la lógica de compras y la validación de datos según los estándares exigidos para el proyecto.
+
+
+1.2. Ámbito del Sistema
+El sistema "TecnoRosita" es una plataforma e-commerce especializada en hardware y tecnología.
+
+Lo que hará: Proveerá un catálogo dinámico de productos renderizado mediante JavaScript, un sistema de carrito de compras que preserva la sesión mediante localStorage, y formularios con validación en tiempo real (DOM) que restringen el ingreso exclusivo a correos institucionales o permitidos (@duoc.cl, @gmail.com).
+
+Objetivos: Garantizar una navegación fluida, estructurada semánticamente bajo HTML5, y estilizada externamente con un diseño de alta gama que mejore la retención del usuario.
+
 
 
 2. Descripción General
-   
-  Perspectiva del Producto:
-   TecnoRosita Elite operará como una aplicación web modular.
-   La arquitectura separa estrictamente la capa de presentación (HTML5 semántico y CSS3 externo) de la lógica de negocio en el cliente (JavaScript).
-   El sistema es autocontenido y utiliza el almacenamiento local del navegador del usuario final para mantener el estado de la sesión de
-   compras sin requerir, en esta etapa, una base de datos relacional externa.
-   
-  Funciones del Producto:Motor de Catálogo: 
-   Renderizado dinámico de hardware tecnológico desde estructuras de datos en memoria.
-   
-  Gestión de Órdenes: 
-   Carrito de compras reactivo con persistencia deestado. 
-   
-  Protocolos de Contacto: 
-   Validación algorítmica de dominios de correo electrónico autorizados (@duoc.cl, @profesor.duoc.cl, @gmail.com) con retroalimentación visual
-   directa en el Modelo de Objetos del Documento (DOM).
-
-  Interfaz Multimedia: 
-   Despliegue de contenido audiovisual embebido de alta resolución sin latencia de interfaz.
+2.1. Perspectiva del Producto
+El frontend de TecnoRosita funciona como una aplicación del lado del cliente (Client-Side). Se integra lógicamente con un panel administrativo paralelo gestionado por el equipo. La plataforma no requiere de bases de datos externas en esta iteración, ya que confía en las capacidades de almacenamiento local del navegador del cliente para gestionar la lógica de selección de productos.
 
 
+2.2. Funciones del Producto
 
-   
+Visualización de Catálogo: Inyección estructurada de arreglos de datos (productos, precios, imágenes) directamente en la interfaz.
+
+Gestión de Compras: Capacidad de añadir productos al carrito, contabilizar el total de ítems y persistir esta información al recargar la página.
+
+Soporte Multimedial: Integración nativa de videos promocionales embebidos para potenciar el marketing del producto.
+
+Control de Formularios: Prevención de envíos de datos incorrectos mediante algoritmos de JavaScript que validan dominios específicos, otorgando feedback visual inmediato en la interfaz sin interrumpir la navegación.
