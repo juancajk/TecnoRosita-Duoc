@@ -3,88 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechStore | Elite Hardware</title>
-    <!-- Rúbrica: Hoja de estilos externa -->
+    <title>TecnoRosita | Gaming Evolution</title>
     <link rel="stylesheet" href="css/tienda.css">
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header class="cyber-header">
+    <header class="legion-header">
         <nav class="elite-nav">
             <div class="logo">
-                <span class="gold-accent">TECH</span>STORE
+                TECNO<span class="neon-red">ROSITA</span>
             </div>
             <ul class="menu">
-                <li><a href="index.html" class="active">ARSENAL</a></li>
-                <li><a href="productos.html">HARDWARE</a></li>
-                <li><a href="nosotros.html">NOSOTROS</a></li>
+                <li><a href="index.html" class="active">INICIO</a></li>
+                <li><a href="#catalogo">ECOSISTEMA</a></li>
+                <li><a href="nosotros.html">COMUNIDAD</a></li>
             </ul>
             <div class="nav-actions">
-                <a href="login.html" class="btn-login-gold">AUTENTICAR</a>
+                <a href="login.html" class="btn-outline-cyan">INICIAR SESIÓN</a>
                 <a href="#" class="cart-icon">
-                    🛒 <span id="cart-count" class="badge-gold">0</span>
+                    🛒 <span id="cart-count" class="badge-red">0</span>
                 </a>
             </div>
         </nav>
     </header>
 
     <main>
-        <!-- Sección Hero con Video Embebido -->
-        <section class="hero-extreme">
+        <!-- Hero Multimedia (Rúbrica: Video Embebido) -->
+        <section class="hero-legion">
             <div class="hero-content">
-                <h1 class="glitch-title">POTENCIA <br><span class="gold-accent">DESATADA</span></h1>
-                <p>Equipamiento forjado para dominar. Rendimiento sin concesiones.</p>
-                <a href="#catalogo" class="btn-solid-gold">EXPLORAR ARSENAL</a>
+                <h1 class="impact-title">ELEVA TU <br><span class="neon-cyan">JUEGO</span></h1>
+                <p>Domina el campo de batalla con el ecosistema gaming definitivo.</p>
+                <a href="#catalogo" class="btn-solid-red">DESCUBRIR ARSENAL</a>
             </div>
-            <article class="video-showcase">
-                <!-- Rúbrica: Video embebido obligatorio -->
-                <iframe src="https://www.youtube.com/embed/Q0eE1oE0rI4?autoplay=1&mute=1&loop=1&controls=0" title="Presentación Oficial" frameborder="0" allowfullscreen></iframe>
-                <div class="monitor-glow"></div>
+            <article class="video-container">
+                <iframe src="https://www.youtube.com/embed/Q0eE1oE0rI4?autoplay=1&mute=1&loop=1&controls=0" title="Trailer TecnoRosita" frameborder="0" allowfullscreen></iframe>
+                <div class="cyber-overlay"></div>
             </article>
         </section>
 
-        <!-- Catálogo Dinámico inyectado vía JS -->
+        <!-- Catálogo de Productos (Inspirado en la imagen) -->
         <section id="catalogo" class="store-grid-section">
-            <h2 class="section-title">HARDWARE <span class="gold-accent">DESTACADO</span></h2>
-            <div class="gold-divider"></div>
-            <div id="contenedor-productos" class="product-matrix">
+            <h2 class="section-title">FORJADO PARA <span class="neon-red">GANAR</span></h2>
+            <div class="grid-legion" id="contenedor-productos">
                 <!-- JavaScript inyectará las tarjetas aquí -->
             </div>
         </section>
 
-        <!-- Formulario de Contacto Táctico -->
+        <!-- Formulario de Contacto (Rúbrica: Validación DOM) -->
         <section class="support-section">
-            <article class="support-terminal">
-                <h2>CENTRO DE <span class="gold-accent">MANDO</span></h2>
-                <p>Ingresa tus credenciales para asistencia técnica de nivel 1.</p>
+            <article class="support-panel">
+                <h2>SOPORTE <span class="neon-cyan">TÁCTICO</span></h2>
                 <form id="form-contacto" novalidate>
                     <div class="form-group">
-                        <input type="text" id="nombre" placeholder="Nombre de Operador" required maxlength="100">
+                        <input type="text" id="nombre" placeholder="ID de Jugador (Nombre)" required maxlength="100">
                     </div>
                     <div class="form-group">
-                        <input type="email" id="correo" placeholder="Correo (@duoc.cl, @gmail.com)" required maxlength="100">
-                        <!-- Rúbrica: Span para error personalizado en el DOM -->
-                        <span id="error-correo" class="terminal-error"></span>
+                        <input type="email" id="correo" placeholder="Correo corporativo (@duoc.cl, @gmail.com)" required maxlength="100">
+                        <span id="error-correo" class="dom-error"></span>
                     </div>
                     <div class="form-group">
-                        <textarea id="comentario" placeholder="Reporte de situación..." required maxlength="500"></textarea>
+                        <textarea id="comentario" placeholder="Reporte de misión..." required maxlength="500"></textarea>
                     </div>
-                    <button type="submit" class="btn-solid-gold w-100">ENVIAR REPORTE</button>
+                    <button type="submit" class="btn-solid-cyan w-100">ENVIAR REPORTE</button>
                 </form>
             </article>
         </section>
     </main>
 
     <footer>
-        <div class="footer-matrix">
-            <div class="brand">
-                <span class="gold-accent">TECH</span>STORE
-            </div>
-            <p>&copy; 2026 TechStore Command Center. División FullStack II.</p>
+        <div class="footer-content">
+            <div class="logo-footer">TECNO<span>ROSITA</span></div>
+            <p>&copy; 2026 Ecosistema Gaming. Desarrollo FullStack II.</p>
         </div>
     </footer>
 
-    <!-- Rúbrica: Archivo JS Externo -->
     <script src="js/tienda.js"></script>
 </body>
 </html>
