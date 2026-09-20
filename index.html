@@ -3,80 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TecnoRosita | Gaming Evolution</title>
+    <title>TecnoRosita | Hardware de Alta Gama</title>
     <link rel="stylesheet" href="css/tienda.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
     <header class="legion-header">
         <nav class="elite-nav">
-            <div class="logo">
-                TECNO<span class="neon-red">ROSITA</span>
-            </div>
+            <div class="logo">TECNO<span class="neon-cyan">ROSITA</span></div>
             <ul class="menu">
                 <li><a href="index.html" class="active">INICIO</a></li>
-                <li><a href="#catalogo">ECOSISTEMA</a></li>
+                <li><a href="#catalogo">PRODUCTOS</a></li>
                 <li><a href="nosotros.html">COMUNIDAD</a></li>
             </ul>
             <div class="nav-actions">
                 <a href="login.html" class="btn-outline-cyan">INICIAR SESIÓN</a>
-                <a href="#" class="cart-icon">
-                    🛒 <span id="cart-count" class="badge-red">0</span>
-                </a>
+                <a href="#" class="cart-icon">🛒 <span id="cart-count" class="badge-red">0</span></a>
             </div>
         </nav>
     </header>
 
     <main>
-        <!-- Hero Multimedia (Rúbrica: Video Embebido) -->
+        <!-- Hero Multimedia (Requisito 100%) -->
         <section class="hero-legion">
             <div class="hero-content">
-                <h1 class="impact-title">ELEVA TU <br><span class="neon-cyan">JUEGO</span></h1>
-                <p>Domina el campo de batalla con el ecosistema gaming definitivo.</p>
-                <a href="#catalogo" class="btn-solid-red">DESCUBRIR ARSENAL</a>
+                <h1 class="impact-title">DOMINA EL <br><span class="neon-cyan">JUEGO</span></h1>
+                <p>Equipamiento táctico para la victoria.</p>
+                <a href="#catalogo" class="btn-solid-cyan">VER OFERTAS</a>
             </div>
             <article class="video-container">
                 <iframe src="https://www.youtube.com/embed/Q0eE1oE0rI4?autoplay=1&mute=1&loop=1&controls=0" title="Trailer TecnoRosita" frameborder="0" allowfullscreen></iframe>
-                <div class="cyber-overlay"></div>
             </article>
         </section>
 
-        <!-- Catálogo de Productos (Inspirado en la imagen) -->
-        <section id="catalogo" class="store-grid-section">
-            <h2 class="section-title">FORJADO PARA <span class="neon-red">GANAR</span></h2>
-            <div class="grid-legion" id="contenedor-productos">
-                <!-- JavaScript inyectará las tarjetas aquí -->
+        <!-- Catálogo Profesional (Estilo Referencia) -->
+        <section id="catalogo" class="store-layout">
+            <!-- Barra lateral de filtros (Estructura visual) -->
+            <aside class="sidebar-filtros">
+                <h3>Filtros <span class="expandir">Expandir todo</span></h3>
+                <div class="filtro-grupo">Categoría de Producto <span>∨</span></div>
+                <div class="filtro-grupo">IA (Inteligencia Artificial) <span>∨</span></div>
+                <div class="filtro-grupo">Precio <span>∨</span></div>
+                <div class="filtro-grupo">Familia <span>∨</span></div>
+                <div class="filtro-grupo">Serie <span>∨</span></div>
+                <div class="filtro-grupo">Procesador <span>∨</span></div>
+                <div class="filtro-grupo">Memoria <span>∨</span></div>
+                <div class="filtro-grupo">Gráficos <span>∨</span></div>
+            </aside>
+
+            <!-- Grilla de Productos Dinámica -->
+            <div class="productos-area">
+                <div class="header-resultados">
+                    <span>8 Resultados coincidentes</span>
+                    <select class="ordenar-select">
+                        <option>Ordenar por: Menor precio</option>
+                        <option>Mayor precio</option>
+                    </select>
+                </div>
+                <div class="grid-legion" id="contenedor-productos">
+                    <!-- JS inyectará las tarjetas aquí -->
+                </div>
             </div>
         </section>
 
-        <!-- Formulario de Contacto (Rúbrica: Validación DOM) -->
+        <!-- Formulario (Requisito Validación) -->
         <section class="support-section">
             <article class="support-panel">
-                <h2>SOPORTE <span class="neon-cyan">TÁCTICO</span></h2>
+                <h2>CONTACTO <span class="neon-cyan">COMERCIAL</span></h2>
                 <form id="form-contacto" novalidate>
+                    <div class="form-group"><input type="text" id="nombre" placeholder="Nombre completo" required></div>
                     <div class="form-group">
-                        <input type="text" id="nombre" placeholder="ID de Jugador (Nombre)" required maxlength="100">
-                    </div>
-                    <div class="form-group">
-                        <input type="email" id="correo" placeholder="Correo corporativo (@duoc.cl, @gmail.com)" required maxlength="100">
+                        <input type="email" id="correo" placeholder="Correo (@duoc.cl, @gmail.com)" required>
                         <span id="error-correo" class="dom-error"></span>
                     </div>
-                    <div class="form-group">
-                        <textarea id="comentario" placeholder="Reporte de misión..." required maxlength="500"></textarea>
-                    </div>
-                    <button type="submit" class="btn-solid-cyan w-100">ENVIAR REPORTE</button>
+                    <div class="form-group"><textarea id="comentario" placeholder="Tu consulta..." required></textarea></div>
+                    <button type="submit" class="btn-solid-cyan w-100">ENVIAR</button>
                 </form>
             </article>
         </section>
     </main>
-
-    <footer>
-        <div class="footer-content">
-            <div class="logo-footer">TECNO<span>ROSITA</span></div>
-            <p>&copy; 2026 Ecosistema Gaming. Desarrollo FullStack II.</p>
-        </div>
-    </footer>
-
     <script src="js/tienda.js"></script>
 </body>
 </html>
