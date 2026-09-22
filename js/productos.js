@@ -1,6 +1,6 @@
 /* ============================================================
    TECNOROSITA — productos.js
-   Renderiza el listado de productos de forma dinámica.
+   Renderiza el listado de productos de forma dinámica con soporte de imágenes.
    ============================================================ */
 
 function discountPercent(product) {
@@ -19,6 +19,7 @@ function productCardHTML(product) {
   const discount = discountPercent(product);
   const noStock = product.stock === 0;
 
+  // Renderiza la imagen real si existe, sino usa el icono SVG de respaldo
   const mediaContent = product.img
     ? `<img src="${product.img}" alt="${product.name}" style="width:100%; height:100%; object-fit:cover;">`
     : (typeof getCategoryIcon === "function" ? getCategoryIcon(product.icon) : "");

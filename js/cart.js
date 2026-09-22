@@ -1,7 +1,4 @@
-//* ============================================================
-   TECNOROSITA — cart.js
-   Módulo del carrito de compras.
-   ============================================================ */
+
 
 const CART_KEY = "tecnorosita_cart";
 const FREE_SHIPPING_THRESHOLD = 60000;

@@ -27,9 +27,10 @@
           <div class="filters-bar__group">
             <input type="search" id="searchInput" placeholder="Buscar producto..." aria-label="Buscar producto" />
             <select id="categoryFilter" aria-label="Filtrar por categoría">
-              <option value="todas">Todas las categorías</option>
+              <option value="">Todas las categorías</option>
             </select>
-            <select id="sortSelect" aria-label="Ordenar por">
+            <!-- ID corregido a sortFilter para que conecte con el JavaScript -->
+            <select id="sortFilter" aria-label="Ordenar por">
               <option value="relevancia">Relevancia</option>
               <option value="precio-asc">Precio: menor a mayor</option>
               <option value="precio-desc">Precio: mayor a menor</option>
