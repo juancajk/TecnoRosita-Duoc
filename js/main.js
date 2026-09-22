@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
 
-    
     const runInput = document.getElementById("run");
     if (runInput) {
         runInput.addEventListener("input", function() {
@@ -8,7 +7,6 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    // 1. SELECTS DINÁMICOS: Regiones y Comunas
     const datosChile = {
         "Región Metropolitana": ["Santiago", "Providencia", "Las Condes", "Maipú"],
         "Valparaíso": ["Valparaíso", "Viña del Mar", "Quilpué"],
@@ -43,11 +41,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const regexCorreo = /^[a-zA-Z0-9._%+-]+@(duoc\.cl|profesor\.duoc\.cl|gmail\.com)$/;
 
-    // 2. VALIDACIONES: Login
     const formLogin = document.getElementById("formLogin");
     if (formLogin) {
         formLogin.addEventListener("submit", function(e) {
+            e.preventDefault(); 
             let isValid = true;
+            
             const correo = document.getElementById("loginCorreo").value;
             const errorCorreo = document.getElementById("errorLoginCorreo");
             const pass = document.getElementById("loginPass").value;
@@ -63,32 +62,33 @@ document.addEventListener("DOMContentLoaded", function() {
                 isValid = false;
             } else { errorPass.textContent = ""; }
 
-            
-            if (!isValid) {
-                e.preventDefault(); 
-            } else {
-                e.preventDefault(); 
-                alert("¡Inicio de sesión exitoso! Bienvenido a TecnoRosita.");
-                window.location.href = "home-admin.html"; 
+            if (isValid) {
+                const correoGuardado = localStorage.getItem('usuarioTecnoRosita');
+                const passGuardada = localStorage.getItem('passTecnoRosita');
+
+                if (correo === correoGuardado && pass === passGuardada) {
+                    alert("¡Inicio de sesión exitoso! Bienvenido a TecnoRosita.");
+                    window.location.href = "home-admin.html"; 
+                } else {
+                    alert("Error: Correo o contraseña incorrectos, o usuario no registrado.");
+                }
             }
         });
     }
 
-    // 3. VALIDACIONES: Registro
     const formRegistro = document.getElementById("formRegistro");
     if (formRegistro) {
         formRegistro.addEventListener("submit", function(e) {
+            e.preventDefault();
             let isValid = true;
             
-            // Validar RUN
             const errorRun = document.getElementById("errorRun");
-            const runRegex = /^[0-9K]{7,9}$/; // Acepta solo mayúscula gracias a la Mejora 1
+            const runRegex = /^[0-9K]{7,9}$/;
             if (!runRegex.test(runInput.value)) {
                 errorRun.textContent = "Ingrese 7 a 9 caracteres, sin puntos ni guion.";
                 isValid = false;
             } else { errorRun.textContent = ""; }
 
-            // Validar Correo
             const correoInput = document.getElementById("correo").value;
             const errorCorreo = document.getElementById("errorCorreo");
             if (!regexCorreo.test(correoInput)) {
@@ -96,7 +96,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 isValid = false;
             } else { errorCorreo.textContent = ""; }
 
-            // Validar Contraseña
             const passInput = document.getElementById("password").value;
             const errorPass = document.getElementById("errorPass");
             if (passInput.length < 4 || passInput.length > 10) {
@@ -104,21 +103,20 @@ document.addEventListener("DOMContentLoaded", function() {
                 isValid = false;
             } else { errorPass.textContent = ""; }
 
-            
-            if (!isValid) {
-                e.preventDefault();
-            } else {
-                e.preventDefault();
+            if (isValid) {
+                localStorage.setItem('usuarioTecnoRosita', correoInput);
+                localStorage.setItem('passTecnoRosita', passInput);
+                
                 alert("¡Registro completado! Ahora puedes iniciar sesión.");
                 window.location.href = "login.html"; 
             }
         });
     }
 
-    // 4. VALIDACIONES: Nuevo Producto
     const formProducto = document.getElementById("formProducto");
     if (formProducto) {
         formProducto.addEventListener("submit", function(e) {
+            e.preventDefault();
             let isValid = true;
             
             const codigo = document.getElementById("codigo").value;
@@ -135,20 +133,47 @@ document.addEventListener("DOMContentLoaded", function() {
                 isValid = false;
             } else { errorPrecio.textContent = ""; }
 
-            if (!isValid) {
-                e.preventDefault();
-            } else {
-                e.preventDefault();
+            if (isValid) {
                 const stock = parseInt(document.getElementById("stock").value);
                 const stockCritico = parseInt(document.getElementById("stockCritico").value);
                 
+                let productos = JSON.parse(localStorage.getItem('productosTecnoRosita')) || [];
                 
+                productos.push({ nombre: codigo, precio: precio, stock: stock });
+                
+                localStorage.setItem('productosTecnoRosita', JSON.stringify(productos));
+
                 if (stockCritico >= 0 && stock <= stockCritico) {
-                    alert("ALERTA: El stock ingresado es igual o inferior al nivel crítico definido.");
+                    alert("ALERTA: El stock ingresado es igual o inferior al nivel crítico. Producto guardado.");
                 } else {
-                    alert("Producto registrado correctamente en el catálogo.");
+                    alert("Producto registrado correctamente en el catálogo local.");
                 }
+                
+                window.location.href = "home-admin.html";
             }
         });
+    }
+
+    const tablaProductos = document.getElementById('tabla-productos-body');
+    if (tablaProductos) {
+        let productos = JSON.parse(localStorage.getItem('productosTecnoRosita')) || [];
+        
+        if (productos.length === 0) {
+            tablaProductos.innerHTML = '<tr><td colspan="4" style="text-align:center;">No hay productos registrados aún.</td></tr>';
+        } else {
+            tablaProductos.innerHTML = '';
+            productos.forEach((prod, index) => {
+                let estadoStock = prod.stock <= 5 ? '<span class="alerta-stock">Stock Crítico</span>' : '<span style="color:#0d9488; font-weight:bold;">Normal</span>';
+                
+                tablaProductos.innerHTML += `
+                    <tr>
+                        <td>${index + 1}</td>
+                        <td>${prod.nombre}</td>
+                        <td>$${prod.precio}</td>
+                        <td>${prod.stock} (${estadoStock})</td>
+                    </tr>
+                `;
+            });
+        }
     }
 });
