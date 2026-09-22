@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TecnoRosita - Tienda de Tecnología Premium</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        
+        .hero-section {
+            background-color: #111827;
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+            border-bottom: 5px solid #d4af37;
+        }
+        .hero-section h1 {
+            color: #d4af37;
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+        .hero-section p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            color: #f3f4f6;
+        }
+        .cta-buttons a {
+            display: inline-block;
+            padding: 12px 30px;
+            margin: 10px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: all 0.3s;
+        }
+        .btn-dorado { background-color: #d4af37; color: #111827; }
+        .btn-dorado:hover { background-color: #c5a028; transform: translateY(-2px); }
+        .btn-turquesa { background-color: #0d9488; color: white; }
+        .btn-turquesa:hover { background-color: #0f766e; transform: translateY(-2px); }
+        
+        .features-section {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 60px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 30%;
+            min-width: 250px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            border-top: 4px solid #0d9488;
+        }
+        .feature-card h3 { color: #111827; margin-bottom: 15px; }
+        
+        footer {
+            background-color: #111827;
+            color: #f3f4f6;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            border-top: 2px solid #0d9488;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <h2>TecnoRosita Store</h2>
+            <div>
+                <a href="login.html">Iniciar Sesión</a> | 
+                <a href="registro.html">Registrarse</a> |
+                <a href="home-admin.html">Administración</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        
+        <section class="hero-section">
+            <h1>Bienvenido a TecnoRosita</h1>
+            <p>La mejor tecnología, notebooks y smartphones de alta gama para ti.</p>
+            <div class="cta-buttons">
+                <a href="login.html" class="btn-dorado">Comprar Ahora</a>
+                <a href="blogs.html" class="btn-turquesa">Noticias Tech 2026</a>
+            </div>
+        </section>
+
+        
+        <section class="features-section">
+            <div class="feature-card">
+                <h3>Hardware Premium</h3>
+                <p>Encuentra lo último en procesadores M3, tarjetas gráficas y componentes para armar tu PC Soñado.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Blog y Reviews</h3>
+                <p>Mantente informado con nuestros análisis en video de los últimos iPhone y consolas del mercado.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Gestión Segura</h3>
+                <p>Sistema de registro y administración de stock en tiempo real con los más altos estándares de UI/UX.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 TecnoRosita - Proyecto de Desarrollo Web.</p>
+    </footer>
+</body>
+</html>
