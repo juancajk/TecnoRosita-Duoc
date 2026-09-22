@@ -1,15 +1,10 @@
-/* ============================================================
-   TECNOROSITA — layout.js
-   Genera dinámicamente la barra de navegación y el footer,
-   inyectándolos en cada página. Esto garantiza que el menú de
-   navegación sea idéntico y consistente en todo el sitio
-   (requisito: elementos de navegación / barra de menú consistente).
-   ============================================================ */
+
 
 const NAV_LINKS = [
   { href: "index.html", label: "Home" },
   { href: "productos.html", label: "Productos" },
   { href: "nosotros.html", label: "Nosotros" },
+  { href: "blogs.html", label: "Blog" }, 
   { href: "contacto.html", label: "Contacto" }
 ];
 
@@ -76,7 +71,8 @@ function renderNavbar(activePage) {
         <ul class="nav__links" id="navLinks">${links}</ul>
 
         <div class="navbar__actions">
-          <a href="contacto.html" class="navbar__login">
+          <!-- Apunta exactamente a tu archivo login.html -->
+          <a href="login.html" class="navbar__login">
             <span>Hola,</span><strong>Ingresa / Regístrate</strong>
           </a>
           <a href="carrito.html" class="cart-icon" aria-label="Ver carrito de compras">
@@ -116,6 +112,7 @@ function renderFooter() {
             <li><a href="index.html">Home</a></li>
             <li><a href="productos.html">Productos</a></li>
             <li><a href="nosotros.html">Nosotros</a></li>
+            <li><a href="blogs.html">Blog</a></li>
             <li><a href="contacto.html">Contacto</a></li>
           </ul>
         </div>
@@ -169,7 +166,6 @@ function initLayout(activePage) {
     );
   }
 
-  // Menú desplegable de categorías
   const catWrapper = document.getElementById("navCategories");
   const catBtn = document.getElementById("navCategoriesBtn");
   if (catWrapper && catBtn) {
@@ -186,7 +182,6 @@ function initLayout(activePage) {
     });
   }
 
-  // Buscador del navbar → redirige al catálogo con el término de búsqueda
   const searchForm = document.getElementById("navSearchForm");
   if (searchForm) {
     searchForm.addEventListener("submit", (e) => {
@@ -196,7 +191,7 @@ function initLayout(activePage) {
     });
   }
 
-  updateCartBadge();
+  if (typeof updateCartBadge === "function") updateCartBadge();
   initScrollEffects();
 }
 
@@ -214,8 +209,6 @@ function initScrollEffects() {
     backToTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
   }
 }
-
-/* ---------- Íconos de categoría de producto (SVG en línea, sin dependencias externas) ---------- */
 
 const CATEGORY_ICONS = {
   keyboard: `<svg viewBox="0 0 64 64" fill="none"><rect x="6" y="18" width="52" height="30" rx="4" stroke="currentColor" stroke-width="2"/><rect x="12" y="24" width="6" height="6" fill="currentColor" opacity=".8"/><rect x="21" y="24" width="6" height="6" fill="currentColor" opacity=".6"/><rect x="30" y="24" width="6" height="6" fill="currentColor" opacity=".8"/><rect x="39" y="24" width="6" height="6" fill="currentColor" opacity=".6"/><rect x="48" y="24" width="6" height="6" fill="currentColor" opacity=".8"/><rect x="12" y="33" width="6" height="6" fill="currentColor" opacity=".6"/><rect x="21" y="33" width="6" height="6" fill="currentColor" opacity=".8"/><rect x="30" y="33" width="18" height="6" fill="currentColor" opacity=".6"/><rect x="48" y="33" width="6" height="6" fill="currentColor" opacity=".8"/></svg>`,
