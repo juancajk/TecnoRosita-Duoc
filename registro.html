@@ -2,71 +2,91 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Registro - TecnoRosita</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Registro · TECNOROSITA</title>
+    <!-- CSS unificado -->
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <h2>TecnoRosita Store</h2>
-            <a href="login.html">Iniciar Sesión</a>
-        </nav>
-    </header>
-    <main>
-        <section class="formulario-container">
-            <h2>Crear Cuenta de Usuario</h2>
+    <header id="site-header"></header>
+
+    <main class="page-section">
+        <div class="container" style="max-width: 550px; margin: 40px auto; background: var(--surface); padding: 40px; border-radius: 12px; border: 1px solid var(--border);">
+            <div class="section-header" style="text-align: center; margin-bottom: 30px;">
+                <span class="section-eyebrow">Únete a nosotros</span>
+                <h2 class="section-title">Crear Cuenta</h2>
+            </div>
+            
             <form id="formRegistro">
-                <div class="form-group">
+                <div class="form-group" style="margin-bottom: 15px;">
                     <label>RUN (Sin puntos ni guion):</label>
-                    <input type="text" id="run" required placeholder="Ej: 19011022K">
-                    <span class="error-msg" id="errorRun"></span>
+                    <input type="text" id="run" class="form-control" required placeholder="Ej: 19011022K">
+                    <span class="form-error" id="errorRun" style="color: red; font-size: 0.85rem;"></span>
                 </div>
-                <div class="form-group">
-                    <label>Nombre:</label>
-                    <input type="text" id="nombre" maxlength="50" required>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+                    <div class="form-group">
+                        <label>Nombre:</label>
+                        <input type="text" id="nombre" class="form-control" maxlength="50" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Apellidos:</label>
+                        <input type="text" id="apellidos" class="form-control" maxlength="100" required>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label>Apellidos:</label>
-                    <input type="text" id="apellidos" maxlength="100" required>
-                </div>
-                <div class="form-group">
+
+                <div class="form-group" style="margin-bottom: 15px;">
                     <label>Correo Electrónico:</label>
-                    <input type="email" id="correo" maxlength="100" required>
-                    <span class="error-msg" id="errorCorreo"></span>
+                    <input type="email" id="correo" class="form-control" maxlength="100" required>
+                    <span class="form-error" id="errorCorreo" style="color: red; font-size: 0.85rem;"></span>
                 </div>
-                <div class="form-group">
+
+                <div class="form-group" style="margin-bottom: 15px;">
                     <label>Contraseña (4 a 10 caracteres):</label>
-                    <input type="password" id="password" required>
-                    <span class="error-msg" id="errorPass"></span>
+                    <input type="password" id="password" class="form-control" required>
+                    <span class="form-error" id="errorPass" style="color: red; font-size: 0.85rem;"></span>
                 </div>
-                <div class="form-group">
+
+                <div class="form-group" style="margin-bottom: 15px;">
                     <label>Tipo de Usuario:</label>
-                    <select id="tipoUsuario" required>
+                    <select id="tipoUsuario" class="form-control" required>
                         <option value="cliente">Cliente</option>
                         <option value="vendedor">Vendedor</option>
                         <option value="admin">Administrador</option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label>Región:</label>
-                    <select id="region" required>
-                        <option value="">Seleccione una región</option>
-                    </select>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+                    <div class="form-group">
+                        <label>Región:</label>
+                        <select id="region" class="form-control" required>
+                            <option value="">Seleccione una región</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Comuna:</label>
+                        <select id="comuna" class="form-control" required>
+                            <option value="">Seleccione región primero</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label>Comuna:</label>
-                    <select id="comuna" required>
-                        <option value="">Seleccione primero una región</option>
-                    </select>
-                </div>
-                <div class="form-group">
+
+                <div class="form-group" style="margin-bottom: 25px;">
                     <label>Dirección:</label>
-                    <input type="text" id="direccion" maxlength="300" required>
+                    <input type="text" id="direccion" class="form-control" maxlength="300" required>
                 </div>
-                <button type="submit" class="btn-primary">Registrarse</button>
+
+                <button type="submit" class="btn btn--gold btn--block btn--lg">Registrarse</button>
             </form>
-        </section>
+        </div>
     </main>
+
+    <footer id="site-footer"></footer>
+
+    
+    <script src="js/data.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/layout.js"></script>
     <script src="js/main.js"></script>
+    <script>initLayout("login.html");</script>
 </body>
 </html>

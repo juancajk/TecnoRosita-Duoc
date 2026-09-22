@@ -2,58 +2,70 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Admin - Nuevo Producto</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Admin - Nuevo Producto · TECNOROSITA</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <h2>Admin Console | TecnoRosita</h2>
-            <a href="home-admin.html">Volver al Home</a>
-        </nav>
-    </header>
-    <main>
-        <section class="formulario-container">
-            <h2>Registrar Nuevo Dispositivo</h2>
+    <header id="site-header"></header>
+
+    <main class="page-section">
+        <div class="container" style="max-width: 600px; margin: 40px auto; background: var(--surface); padding: 40px; border-radius: 12px; border: 1px solid var(--border);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+                <div>
+                    <span class="section-eyebrow">Bodega</span>
+                    <h2 class="section-title">Registrar Dispositivo</h2>
+                </div>
+                <a href="home-admin.html" class="btn btn--outline">Volver</a>
+            </div>
+            
             <form id="formProducto">
-                <div class="form-group">
-                    <label>Código de Producto:</label>
-                    <input type="text" id="codigo" required>
-                    <span class="error-msg" id="errorCodigo"></span>
-                </div>
-                <div class="form-group">
+                <div class="form-group" style="margin-bottom: 15px;">
                     <label>Nombre del Producto:</label>
-                    <input type="text" id="nombreProd" maxlength="100" required>
+                    <input type="text" id="codigo" class="form-control" placeholder="Ej: Teclado Mecánico RGB" required>
+                    <span class="form-error" id="errorCodigo" style="color: red; font-size: 0.85rem;"></span>
                 </div>
-                <div class="form-group">
-                    <label>Descripción:</label>
-                    <textarea id="descProd" maxlength="500"></textarea>
-                </div>
-                <div class="form-group">
-                    <label>Categoría:</label>
-                    <select required>
+                
+                <div class="form-group" style="margin-bottom: 15px;">
+                    <label>Categoría (Opcional visual):</label>
+                    <select id="nombreProd" class="form-control">
                         <option value="smartphone">Smartphones</option>
                         <option value="laptop">Computadores</option>
                         <option value="accesorios">Accesorios</option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label>Precio ($):</label>
-                    <input type="number" id="precio" step="0.01" required>
-                    <span class="error-msg" id="errorPrecio"></span>
+                
+                <div class="form-group" style="margin-bottom: 15px;">
+                    <label>Descripción:</label>
+                    <textarea id="descProd" class="form-control" rows="3" maxlength="500"></textarea>
                 </div>
-                <div class="form-group">
-                    <label>Stock en Bodega (Entero):</label>
-                    <input type="number" id="stock" required>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin-bottom: 25px;">
+                    <div class="form-group">
+                        <label>Precio ($):</label>
+                        <input type="number" id="precio" class="form-control" step="1" min="0" required>
+                        <span class="form-error" id="errorPrecio" style="color: red; font-size: 0.85rem;"></span>
+                    </div>
+                    <div class="form-group">
+                        <label>Stock Bodega:</label>
+                        <input type="number" id="stock" class="form-control" min="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Stock Crítico:</label>
+                        <input type="number" id="stockCritico" class="form-control" min="0" placeholder="Ej: 5">
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label>Stock Crítico (Alerta Mínima):</label>
-                    <input type="number" id="stockCritico">
-                </div>
-                <button type="submit" class="btn-primary">Añadir al Catálogo</button>
+
+                <button type="submit" class="btn btn--gold btn--block btn--lg">Añadir al Catálogo</button>
             </form>
-        </section>
+        </div>
     </main>
+
+    <footer id="site-footer"></footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/layout.js"></script>
     <script src="js/main.js"></script>
+    <script>initLayout("");</script>
 </body>
 </html>

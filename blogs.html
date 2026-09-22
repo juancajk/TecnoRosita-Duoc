@@ -2,45 +2,58 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Noticias - TecnoRosita</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Noticias y Blog · TECNOROSITA</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <h2>TecnoRosita Store</h2>
-            <a href="index.html">Volver a Tienda</a>
-        </nav>
-    </header>
-    <main>
-        <section class="blog-detalle">
-            <h1>Últimas Noticias Tech</h1>
-            
-            
-            <div class="blog-card">
-                <h2>Los mejores notebook calidad precio del 2026</h2>
-                <p>Descubre qué equipos lideran el mercado este año equilibrando rendimiento y presupuesto.</p>
-                <br>
-                <a href="blog-notebooks.html" class="btn-primary">Leer Artículo Completo</a>
-            </div>
+    <header id="site-header"></header>
 
-        
-            <div class="blog-card">
-                <h2>Análisis a fondo: iPhone 18 Pro Max</h2>
-                <p>Ponemos a prueba las nuevas cámaras y el procesador de última generación de Apple.</p>
-                <br>
-                <a href="blog-iphone.html" class="btn-primary">Leer Artículo Completo</a>
+    <main class="page-section">
+        <div class="container">
+            <div class="section-header" style="text-align: left; margin-bottom: 40px;">
+                <span class="section-eyebrow">Comunidad TecnoRosita</span>
+                <h1 class="section-title">Últimas Noticias Tech</h1>
             </div>
-
             
-            <div class="blog-card">
-                <h2>Batalla de Consolas Gamer: ¿Cuál elegir?</h2>
-                <p>Comparamos rendimiento, catálogo de juegos y precios para ayudarte a tomar la mejor decisión.</p>
-                <br>
-                <a href="blog-consolas.html" class="btn-primary">Leer Artículo Completo</a>
-            </div>
+            <div class="grid">
+                <!-- Tarjeta 1 -->
+                <article class="card" style="padding: 20px;">
+                    <div class="card__body">
+                        <span class="card__category">Laptops & Hardware</span>
+                        <h2 style="font-size: 1.3rem; margin: 10px 0;">Los mejores notebook calidad precio del 2026</h2>
+                        <p style="color: var(--text-faint); margin-bottom: 20px;">Descubre qué equipos lideran el mercado este año equilibrando rendimiento y presupuesto.</p>
+                        <a href="blog-notebooks.html" class="btn btn--outline btn--block">Leer Artículo Completo</a>
+                    </div>
+                </article>
 
-        </section>
+                <!-- Tarjeta 2 -->
+                <article class="card" style="padding: 20px;">
+                    <div class="card__body">
+                        <span class="card__category">Smartphones</span>
+                        <h2 style="font-size: 1.3rem; margin: 10px 0;">Análisis a fondo: iPhone 18 Pro Max</h2>
+                        <p style="color: var(--text-faint); margin-bottom: 20px;">Ponemos a prueba las nuevas cámaras y el procesador de última generación de Apple.</p>
+                        <a href="blog-iphone.html" class="btn btn--outline btn--block">Leer Artículo Completo</a>
+                    </div>
+                </article>
+
+                <!-- Tarjeta 3 -->
+                <article class="card" style="padding: 20px;">
+                    <div class="card__body">
+                        <span class="card__category">Gaming</span>
+                        <h2 style="font-size: 1.3rem; margin: 10px 0;">Batalla de Consolas Gamer: ¿Cuál elegir?</h2>
+                        <p style="color: var(--text-faint); margin-bottom: 20px;">Comparamos rendimiento, catálogo de juegos y precios para ayudarte a tomar la mejor decisión.</p>
+                        <a href="blog-consolas.html" class="btn btn--outline btn--block">Leer Artículo Completo</a>
+                    </div>
+                </article>
+            </div>
+        </div>
     </main>
+
+    <footer id="site-footer"></footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/layout.js"></script>
+    <script>initLayout("blog.html");</script>
 </body>
 </html>

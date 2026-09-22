@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 const passGuardada = localStorage.getItem('passTecnoRosita');
 
                 if (correo === correoGuardado && pass === passGuardada) {
-                    alert("¡Inicio de sesión exitoso! Bienvenido a TecnoRosita.");
+                    alert("¡Inicio de sesión exitoso! Bienvenido al Panel de Administración.");
                     window.location.href = "home-admin.html"; 
                 } else {
                     alert("Error: Correo o contraseña incorrectos, o usuario no registrado.");
@@ -122,7 +122,7 @@ document.addEventListener("DOMContentLoaded", function() {
             const codigo = document.getElementById("codigo").value;
             const errorCodigo = document.getElementById("errorCodigo");
             if (codigo.length < 3) {
-                errorCodigo.textContent = "El código debe tener al menos 3 caracteres.";
+                errorCodigo.textContent = "El código (nombre) debe tener al menos 3 caracteres.";
                 isValid = false;
             } else { errorCodigo.textContent = ""; }
 
@@ -135,11 +135,27 @@ document.addEventListener("DOMContentLoaded", function() {
 
             if (isValid) {
                 const stock = parseInt(document.getElementById("stock").value);
-                const stockCritico = parseInt(document.getElementById("stockCritico").value);
+                const stockCritico = parseInt(document.getElementById("stockCritico")?.value || 5);
                 
                 let productos = JSON.parse(localStorage.getItem('productosTecnoRosita')) || [];
                 
-                productos.push({ nombre: codigo, precio: precio, stock: stock });
+                // Generar un ID único basado en el tamaño actual
+                let nuevoId = productos.length > 0 ? Math.max(...productos.map(p => Number(p.id) || 0)) + 1 : 1;
+                
+                
+                productos.push({ 
+                    id: nuevoId,
+                    sku: "PROD-NUEVO-" + nuevoId,
+                    name: codigo,  
+                    category: "Componentes", 
+                    price: precio, 
+                    originalPrice: precio + (precio * 0.2), 
+                    stock: stock, 
+                    stockCritico: stockCritico,
+                    icon: "gpu", 
+                    rating: 5.0,
+                    description: "Producto agregado recientemente desde el panel de administración."
+                });
                 
                 localStorage.setItem('productosTecnoRosita', JSON.stringify(productos));
 
@@ -156,49 +172,24 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const tablaProductos = document.getElementById('tabla-productos-body');
     if (tablaProductos) {
-        let productos = JSON.parse(localStorage.getItem('productosTecnoRosita'));
+        let productos = JSON.parse(localStorage.getItem('productosTecnoRosita')) || [];
         
-        if (!productos || productos.length === 0) {
-            const inventarioTecnoRosita = [
-                { id: 1, marca: "LG", nombre: 'Monitor UltraGear OLED 27" 240Hz', precioN: 899990 },
-                { id: 2, marca: "CORSAIR", nombre: "RAM Vengeance RGB Pro 32GB DDR5", precioN: 120990 },
-                { id: 3, marca: "VERTAGEAR", nombre: "Silla Gamer Racing Series SL5000 RGB", precioN: 399990 },
-                { id: 4, marca: "ASUS", nombre: "PC ROG Strix (RTX 4090, Intel i9)", precioN: 4500990 },
-                { id: 5, marca: "HYPERX", nombre: "Audífonos Cloud III Wireless", precioN: 149990 },
-                { id: 6, marca: "LOGITECH", nombre: "Mouse G502 Hero Inalámbrico", precioN: 99990 },
-                { id: 7, marca: "RAZER", nombre: "Teclado Mecánico Huntsman V2", precioN: 210000 },
-                { id: 8, marca: "AMD", nombre: "Procesador Ryzen 9 7950X3D", precioN: 750990 },
-                { id: 9, marca: "NZXT", nombre: "Gabinete H9 Flow Dual-Chamber", precioN: 189990 },
-                { id: 10, marca: "ASUS", nombre: "Notebook ROG Zephyrus G14", precioN: 1899990 },
-                { id: 11, marca: "MSI", nombre: "Placa Madre MPG Z790 Carbon WIFI", precioN: 349990 },
-                { id: 12, marca: "ELGATO", nombre: "Stream Deck MK.2", precioN: 159990 },
-                { id: 13, marca: "SAMSUNG", nombre: "SSD 990 PRO NVMe M.2 2TB", precioN: 249990 },
-                { id: 14, marca: "STEELSERIES", nombre: "Mousepad QcK Prism Cloth 3XL", precioN: 99990 },
-                { id: 15, marca: "NVIDIA", nombre: "Tarjeta Gráfica RTX 4080 Super", precioN: 1499990 },
-                { id: 16, marca: "NZXT", nombre: "Refrigeración Líquida Kraken Elite 360", precioN: 289990 },
-                { id: 17, marca: "SONY", nombre: "Mando DualSense Edge", precioN: 219990 }
-            ];
-
-            productos = inventarioTecnoRosita.map(item => ({
-                nombre: item.marca + " " + item.nombre,
-                precio: item.precioN,
-                stock: item.id % 4 === 0 ? 3 : 15 
-            }));
-
-            localStorage.setItem('productosTecnoRosita', JSON.stringify(productos));
-        }
-
         tablaProductos.innerHTML = '';
         productos.forEach((prod, index) => {
-            let estadoStock = prod.stock <= 5 ? '<span class="alerta-stock" style="color:#dc2626; font-weight:bold;">Stock Crítico</span>' : '<span style="color:#0d9488; font-weight:bold;">Normal</span>';
-            let codigoFormateado = "PRD" + String(index + 1).padStart(3, '0');
+            
+            let stockVal = prod.stock || 0;
+            let estadoStock = stockVal <= (prod.stockCritico || 5) 
+                ? '<span class="badge badge--warning">Stock Crítico</span>' 
+                : '<span class="badge badge--discount" style="background-color: var(--success);">Normal</span>';
+            
+            let codigoFormateado = prod.sku || "PRD" + String(index + 1).padStart(3, '0');
             
             tablaProductos.innerHTML += `
                 <tr>
                     <td>${codigoFormateado}</td>
-                    <td>${prod.nombre}</td>
-                    <td>${prod.stock} (${estadoStock})</td>
-                    <td>$${prod.precio.toLocaleString('es-CL')}</td>
+                    <td><strong>${prod.name || 'Sin Nombre'}</strong></td>
+                    <td>${stockVal} ${estadoStock}</td>
+                    <td>$${(prod.price || 0).toLocaleString('es-CL')}</td>
                 </tr>
             `;
         });

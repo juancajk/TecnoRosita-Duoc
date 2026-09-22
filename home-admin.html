@@ -2,37 +2,54 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Panel Administrador</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Panel Administrador · TECNOROSITA</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .admin-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .admin-table th, .admin-table td { padding: 15px; border-bottom: 1px solid var(--border); text-align: left; }
+        .admin-table th { color: var(--gold); background: rgba(255,255,255,0.02); }
+    </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <h2>Admin Console | TecnoRosita</h2>
-            <div>
-                <a href="nuevo-producto.html">Nuevo Producto</a>
-                <a href="index.html">Ir a Tienda</a>
+    <header id="site-header"></header>
+
+    <main class="page-section">
+        <div class="container">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+                <div>
+                    <span class="section-eyebrow">Admin Console</span>
+                    <h2 class="section-title">Listado de Productos en Sistema</h2>
+                </div>
+                <div>
+                    <a href="nuevo-producto.html" class="btn btn--gold">➕ Nuevo Producto</a>
+                    <a href="index.html" class="btn btn--outline">Ir a Tienda</a>
+                </div>
             </div>
-        </nav>
-    </header>
-    <main>
-        <section class="admin-panel">
-            <h2>Listado de Productos en Sistema</h2>
-            <table class="admin-table">
-                <thead>
-                    <tr>
-                        <th>Código</th>
-                        <th>Nombre</th>
-                        <th>Stock</th>
-                        <th>Precio</th>
-                    </tr>
-                </thead>
-                <tbody id="tabla-productos-body">
-                    
-                </tbody>
-            </table>
-        </section>
+            
+            <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden;">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Código / SKU</th>
+                            <th>Nombre del Producto</th>
+                            <th>Estado de Stock</th>
+                            <th>Precio Unitario</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabla-productos-body">
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </main>
+
+    <footer id="site-footer"></footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/layout.js"></script>
     <script src="js/main.js"></script>
+    <script>initLayout("");</script>
 </body>
 </html>

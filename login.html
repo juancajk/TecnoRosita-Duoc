@@ -2,34 +2,46 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Login - TecnoRosita</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Login · TECNOROSITA</title>
+    
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <h2>TecnoRosita Store</h2>
-            <a href="registro.html">Crear Cuenta</a>
-        </nav>
-    </header>
-    <main>
-        <section class="formulario-container">
-            <h2>Iniciar Sesión</h2>
+    <header id="site-header"></header>
+
+    <main class="page-section">
+        <div class="container" style="max-width: 450px; margin: 40px auto; background: var(--surface); padding: 40px; border-radius: 12px; border: 1px solid var(--border);">
+            <div class="section-header" style="text-align: center; margin-bottom: 30px;">
+                <span class="section-eyebrow">Administración</span>
+                <h2 class="section-title">Iniciar Sesión</h2>
+            </div>
+            
             <form id="formLogin">
-                <div class="form-group">
+                <div class="form-group" style="margin-bottom: 20px;">
                     <label>Correo Electrónico:</label>
-                    <input type="email" id="loginCorreo" maxlength="100" required>
-                    <span class="error-msg" id="errorLoginCorreo"></span>
+                    <input type="email" id="loginCorreo" class="form-control" maxlength="100" placeholder="ejemplo@duoc.cl" required>
+                    <span class="form-error" id="errorLoginCorreo" style="color: red; font-size: 0.85rem;"></span>
                 </div>
-                <div class="form-group">
+                <div class="form-group" style="margin-bottom: 30px;">
                     <label>Contraseña:</label>
-                    <input type="password" id="loginPass" required>
-                    <span class="error-msg" id="errorLoginPass"></span>
+                    <input type="password" id="loginPass" class="form-control" placeholder="••••••••" required>
+                    <span class="form-error" id="errorLoginPass" style="color: red; font-size: 0.85rem;"></span>
                 </div>
-                <button type="submit" class="btn-primary">Ingresar</button>
+                <button type="submit" class="btn btn--gold btn--block btn--lg">Ingresar al Panel</button>
+                <div style="text-align: center; margin-top: 20px;">
+                    <a href="registro.html" style="color: var(--text-faint);">¿No tienes cuenta? Crear Cuenta</a>
+                </div>
             </form>
-        </section>
+        </div>
     </main>
+
+    <footer id="site-footer"></footer>
+
+    
+    <script src="js/data.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/layout.js"></script>
     <script src="js/main.js"></script>
+    <script>initLayout("login.html");</script>
 </body>
 </html>
