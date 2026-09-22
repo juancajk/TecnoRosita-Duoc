@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catálogo de Productos · TECNOROSITA</title>
+  <meta name="description" content="Explora el catálogo completo TECNOROSITA: teclados, mouse, audífonos, monitores, sillas y notebooks gamer premium." />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <header id="site-header"></header>
+
+  <main>
+    <div class="breadcrumb container">
+      <a href="index.html">Home</a><span>/</span><span>Productos</span>
+    </div>
+
+    <section class="page-section page-section--tight">
+      <div class="container">
+        <div class="section-header" style="text-align:left; margin-bottom:26px;">
+          <span class="section-eyebrow">Catálogo Completo</span>
+          <h1 class="section-title">Nuestros Productos</h1>
+        </div>
+
+        <div class="filters-bar">
+          <div class="filters-bar__group">
+            <input type="search" id="searchInput" placeholder="Buscar producto..." aria-label="Buscar producto" />
+            <select id="categoryFilter" aria-label="Filtrar por categoría">
+              <option value="todas">Todas las categorías</option>
+            </select>
+            <select id="sortSelect" aria-label="Ordenar por">
+              <option value="relevancia">Relevancia</option>
+              <option value="precio-asc">Precio: menor a mayor</option>
+              <option value="precio-desc">Precio: mayor a menor</option>
+              <option value="nombre">Nombre (A-Z)</option>
+            </select>
+          </div>
+          <span class="results-count" id="resultsCount"></span>
+        </div>
+
+        <div class="grid" id="productGrid"></div>
+
+        <div class="empty-state" id="emptyState" hidden>
+          <h3>No encontramos productos</h3>
+          <p>Prueba ajustando el filtro de categoría o el término de búsqueda.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="site-footer"></footer>
+  <button type="button" class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+
+  <script src="js/data.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/productos.js"></script>
+  <script>initLayout("productos.html");</script>
+</body>
+</html>

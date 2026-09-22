@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Detalle de Producto · TECNOROSITA</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <header id="site-header"></header>
+
+  <main>
+    <div class="breadcrumb container">
+      <a href="index.html">Home</a><span>/</span>
+      <a href="productos.html">Productos</a><span>/</span>
+      <a href="productos.html" id="breadcrumbCategory">Categoría</a><span>/</span>
+      <span id="breadcrumbProduct">Producto</span>
+    </div>
+
+    <section class="page-section page-section--tight">
+      <div class="container detail" id="productDetail">
+        <!-- Renderizado dinámicamente por js/detalle.js según ?id= -->
+      </div>
+    </section>
+
+    <section class="related">
+      <div class="container">
+        <div class="section-header" style="text-align:left;">
+          <span class="section-eyebrow">También te puede interesar</span>
+          <h2 class="section-title">Productos Relacionados</h2>
+        </div>
+        <div class="grid" id="relatedProducts"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="site-footer"></footer>
+  <button type="button" class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+
+  <script src="js/data.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/productos.js"></script>
+  <script src="js/detalle.js"></script>
+  <script>initLayout("productos.html");</script>
+</body>
+</html>
