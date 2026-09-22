@@ -156,24 +156,51 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const tablaProductos = document.getElementById('tabla-productos-body');
     if (tablaProductos) {
-        let productos = JSON.parse(localStorage.getItem('productosTecnoRosita')) || [];
+        let productos = JSON.parse(localStorage.getItem('productosTecnoRosita'));
         
-        if (productos.length === 0) {
-            tablaProductos.innerHTML = '<tr><td colspan="4" style="text-align:center;">No hay productos registrados aún.</td></tr>';
-        } else {
-            tablaProductos.innerHTML = '';
-            productos.forEach((prod, index) => {
-                let estadoStock = prod.stock <= 5 ? '<span class="alerta-stock">Stock Crítico</span>' : '<span style="color:#0d9488; font-weight:bold;">Normal</span>';
-                
-                tablaProductos.innerHTML += `
-                    <tr>
-                        <td>${index + 1}</td>
-                        <td>${prod.nombre}</td>
-                        <td>$${prod.precio}</td>
-                        <td>${prod.stock} (${estadoStock})</td>
-                    </tr>
-                `;
-            });
+        if (!productos || productos.length === 0) {
+            const inventarioTecnoRosita = [
+                { id: 1, marca: "LG", nombre: 'Monitor UltraGear OLED 27" 240Hz', precioN: 899990 },
+                { id: 2, marca: "CORSAIR", nombre: "RAM Vengeance RGB Pro 32GB DDR5", precioN: 120990 },
+                { id: 3, marca: "VERTAGEAR", nombre: "Silla Gamer Racing Series SL5000 RGB", precioN: 399990 },
+                { id: 4, marca: "ASUS", nombre: "PC ROG Strix (RTX 4090, Intel i9)", precioN: 4500990 },
+                { id: 5, marca: "HYPERX", nombre: "Audífonos Cloud III Wireless", precioN: 149990 },
+                { id: 6, marca: "LOGITECH", nombre: "Mouse G502 Hero Inalámbrico", precioN: 99990 },
+                { id: 7, marca: "RAZER", nombre: "Teclado Mecánico Huntsman V2", precioN: 210000 },
+                { id: 8, marca: "AMD", nombre: "Procesador Ryzen 9 7950X3D", precioN: 750990 },
+                { id: 9, marca: "NZXT", nombre: "Gabinete H9 Flow Dual-Chamber", precioN: 189990 },
+                { id: 10, marca: "ASUS", nombre: "Notebook ROG Zephyrus G14", precioN: 1899990 },
+                { id: 11, marca: "MSI", nombre: "Placa Madre MPG Z790 Carbon WIFI", precioN: 349990 },
+                { id: 12, marca: "ELGATO", nombre: "Stream Deck MK.2", precioN: 159990 },
+                { id: 13, marca: "SAMSUNG", nombre: "SSD 990 PRO NVMe M.2 2TB", precioN: 249990 },
+                { id: 14, marca: "STEELSERIES", nombre: "Mousepad QcK Prism Cloth 3XL", precioN: 99990 },
+                { id: 15, marca: "NVIDIA", nombre: "Tarjeta Gráfica RTX 4080 Super", precioN: 1499990 },
+                { id: 16, marca: "NZXT", nombre: "Refrigeración Líquida Kraken Elite 360", precioN: 289990 },
+                { id: 17, marca: "SONY", nombre: "Mando DualSense Edge", precioN: 219990 }
+            ];
+
+            productos = inventarioTecnoRosita.map(item => ({
+                nombre: item.marca + " " + item.nombre,
+                precio: item.precioN,
+                stock: item.id % 4 === 0 ? 3 : 15 
+            }));
+
+            localStorage.setItem('productosTecnoRosita', JSON.stringify(productos));
         }
+
+        tablaProductos.innerHTML = '';
+        productos.forEach((prod, index) => {
+            let estadoStock = prod.stock <= 5 ? '<span class="alerta-stock" style="color:#dc2626; font-weight:bold;">Stock Crítico</span>' : '<span style="color:#0d9488; font-weight:bold;">Normal</span>';
+            let codigoFormateado = "PRD" + String(index + 1).padStart(3, '0');
+            
+            tablaProductos.innerHTML += `
+                <tr>
+                    <td>${codigoFormateado}</td>
+                    <td>${prod.nombre}</td>
+                    <td>${prod.stock} (${estadoStock})</td>
+                    <td>$${prod.precio.toLocaleString('es-CL')}</td>
+                </tr>
+            `;
+        });
     }
 });
