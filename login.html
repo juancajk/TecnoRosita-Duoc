@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Login · TECNOROSITA</title>
+    
+    <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/mejoras.css">
+</head>
+<body>
+    <header id="site-header"></header>
+
+    <main class="page-section">
+        <div class="container" style="max-width: 450px; margin: 40px auto; background: var(--surface); padding: 40px; border-radius: 12px; border: 1px solid var(--border);">
+            <div class="section-header" style="text-align: center; margin-bottom: 30px;">
+                <span class="section-eyebrow">Administración</span>
+                <h2 class="section-title">Iniciar Sesión</h2>
+            </div>
+            
+            <div class="auth-logo"><img src="img/favicon.svg" alt="Logo" width="64" height="64"><strong>TecnoRosita</strong></div>
+            <form id="formLogin">
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <label>Correo Electrónico:</label>
+                    <input type="email" id="loginCorreo" class="form-control" maxlength="100" placeholder="ejemplo@duoc.cl" required>
+                    <span class="form-error" id="errorLoginCorreo" style="color: red; font-size: 0.85rem;"></span>
+                </div>
+                <div class="form-group" style="margin-bottom: 30px;">
+                    <label>Contraseña:</label>
+                    <input type="password" id="loginPass" class="form-control" placeholder="••••••••" required>
+                    <span class="form-error" id="errorLoginPass" style="color: red; font-size: 0.85rem;"></span>
+                </div>
+                <button type="submit" class="btn btn--gold btn--block btn--lg">Ingresar al Panel</button>
+                <div style="text-align: center; margin-top: 20px;">
+                    <a href="registro.html" style="color: var(--text-faint);">¿No tienes cuenta? Crear Cuenta</a>
+                </div>
+            </form>
+        </div>
+    </main>
+    <div class="container" style="max-width:450px;margin:-20px auto 40px"><div class="demo-accounts"><strong>Cuentas de prueba:</strong> admin@duoc.cl / admin123 · vendedor@duoc.cl / vende123 · cliente@gmail.com / cliente1</div></div>
+
+    <footer id="site-footer"></footer>
+
+    
+    <script src="js/data.js"></script>
+  <script src="js/imagenes.js"></script>
+    <script src="js/cart.js"></script>
+  <script src="js/complementos.js"></script>
+    <script src="js/layout.js"></script>
+    <script src="js/main.js"></script>
+  <script src="js/validaciones.js"></script>
+  <script src="js/roles.js"></script>
+    <script src="js/experiencia.js"></script>
+  <script>initLayout("login.html");</script>
+</body>
+</html>

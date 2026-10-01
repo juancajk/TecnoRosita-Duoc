@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TECNOROSITA · Equipamiento Gamer de Alta Gama</title>
+  <meta name="description" content="TECNOROSITA — tienda online de periféricos y equipamiento gamer premium: teclados, mouse, audífonos, monitores, sillas y notebooks de alto rendimiento." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22><polygon points=%2224,2 44,14 44,34 24,46 4,34 4,14%22 fill=%22%23050506%22 stroke=%22%23d4af37%22 stroke-width=%222%22/></svg>" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/mejoras.css">
+  <link rel="preload" as="image" href="https://images.unsplash.com/photo-1593305841991-05c297ba4575?w=1600&h=800&fit=crop&auto=format&q=80" />
+  <link rel="preload" as="image" href="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1600&h=800&fit=crop&auto=format&q=80" />
+  <link rel="preload" as="image" href="https://images.unsplash.com/photo-1593062096033-9a26b09da705?w=1600&h=800&fit=crop&auto=format&q=80" />
+</head>
+<body>
+
+  <header id="site-header"></header>
+
+  <main>
+    
+    <section class="hero" aria-label="Banner principal">
+      <div class="hero__slide hero__slide--a is-active">
+        <img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?w=1600&h=800&fit=crop&auto=format&q=80" alt="" class="hero__bg-img" loading="eager" />
+        <div class="hero__overlay"></div>
+        <div class="container hero__content">
+          <span class="hero__tag">✦ Colección Elite 2026</span>
+          <h1 class="hero__title">Donde cada partida se siente <span>legendaria</span></h1>
+          <p class="hero__desc">Hardware de élite que responde antes de que lo pienses. Periféricos gamer con acabados premium en negro, dorado y turquesa — para quienes no juegan: compiten.</p>
+          <div class="hero__cta">
+            <a href="productos.html" class="btn btn--gold btn--lg">Explorar catálogo</a>
+            <a href="nosotros.html" class="btn btn--outline btn--lg">Nuestra historia</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__slide hero__slide--b">
+        <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1600&h=800&fit=crop&auto=format&q=80" alt="" class="hero__bg-img" loading="eager" />
+        <div class="hero__overlay"></div>
+        <div class="container hero__content">
+          <span class="hero__tag">✦ 0.1ms de respuesta · Precisión Pro</span>
+          <h1 class="hero__title">El lag no existe en <span>tu vocabulario</span></h1>
+          <p class="hero__desc">Sensores de 30.000 DPI, switches ópticos y polling rate de 8.000Hz. Cuando milisegundos definen al campeón, tu equipo no puede ser el problema.</p>
+          <div class="hero__cta">
+            <a href="productos.html?cat=Mouse" class="btn btn--gold btn--lg">Mouse competitivos</a>
+            <a href="productos.html?cat=Teclados" class="btn btn--outline btn--lg">Teclados mecánicos</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__slide hero__slide--c">
+        <img src="https://images.unsplash.com/photo-1593062096033-9a26b09da705?w=1600&h=800&fit=crop&auto=format&q=80" alt="" class="hero__bg-img" loading="eager" />
+        <div class="hero__overlay"></div>
+        <div class="container hero__content">
+          <span class="hero__tag">✦ Envío gratis · Garantía 24 meses · Soporte 24/7</span>
+          <h1 class="hero__title">Arma el <span>setup que mereces</span></h1>
+          <p class="hero__desc">Monitores 4K 240Hz, sillas ergonómicas y notebooks que no piden permiso. Todo con garantía extendida TecnoRosita Care y despacho express a todo Chile.</p>
+          <div class="hero__cta">
+            <a href="productos.html" class="btn btn--gold btn--lg">Armar mi setup</a>
+            <a href="productos.html?cat=Monitores" class="btn btn--outline btn--lg">Ver monitores</a>
+          </div>
+        </div>
+      </div>
+
+      <button type="button" class="hero__nav hero__nav--prev" id="heroPrev" aria-label="Anterior">‹</button>
+      <button type="button" class="hero__nav hero__nav--next" id="heroNext" aria-label="Siguiente">›</button>
+      <div class="hero__dots" id="heroDots"></div>
+    </section>
+
+    <!-- VALUE STRIP -->
+    <div class="container">
+      <div class="value-strip">
+        <div class="value-item">
+          <div class="value-item__icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 12l7-9 11 9-11 9-7-9z" stroke="currentColor" stroke-width="1.6"/></svg>
+          </div>
+          <div><h4>Envío Premium</h4><p>Gratis sobre $60.000</p></div>
+        </div>
+        <div class="value-item">
+          <div class="value-item__icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6l7-3z" stroke="currentColor" stroke-width="1.6"/></svg>
+          </div>
+          <div><h4>Garantía TecnoRosita Care</h4><p>12 meses en todos los productos</p></div>
+        </div>
+        <div class="value-item">
+          <div class="value-item__icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="18" height="13" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M3 10h18" stroke="currentColor" stroke-width="1.6"/></svg>
+          </div>
+          <div><h4>Pago 100% Seguro</h4><p>WebPay, Visa y Mastercard</p></div>
+        </div>
+        <div class="value-item">
+          <div class="value-item__icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3 3" stroke="currentColor" stroke-width="1.6"/></svg>
+          </div>
+          <div><h4>Soporte 24/7</h4><p>Asesoría técnica especializada</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TILES DE CATEGORÍAS -->
+    <section class="page-section page-section--tight">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">Explora por categoría</span>
+          <h2 class="section-title">Descubre Nuestras Categorías</h2>
+        </div>
+        <div class="category-tiles">
+          <a href="productos.html?cat=Hogar+Inteligente" class="category-tile category-tile--1">
+            <svg class="category-tile__icon" viewBox="0 0 64 64" fill="none"><path d="M10 28L32 10l22 18" stroke="currentColor" stroke-width="2"/><path d="M16 26v26h32V26" stroke="currentColor" stroke-width="2"/><circle cx="32" cy="40" r="6" stroke="currentColor" stroke-width="2"/></svg>
+            <span class="category-tile__tag">Hogar</span>
+            <div class="category-tile__body"><h4>Conectado</h4><p>Un hogar más inteligente</p></div>
+          </a>
+          <a href="productos.html?cat=Monitores" class="category-tile category-tile--2">
+            <svg class="category-tile__icon" viewBox="0 0 64 64" fill="none"><rect x="6" y="10" width="52" height="34" rx="3" stroke="currentColor" stroke-width="2"/><line x1="32" y1="44" x2="32" y2="52" stroke="currentColor" stroke-width="2"/><line x1="20" y1="56" x2="44" y2="56" stroke="currentColor" stroke-width="2"/></svg>
+            <span class="category-tile__tag">Mejora tus</span>
+            <div class="category-tile__body"><h4>Monitores</h4><p>Eleva tu experiencia visual</p></div>
+          </a>
+          <a href="productos.html?cat=Laptops" class="category-tile category-tile--3">
+            <svg class="category-tile__icon" viewBox="0 0 64 64" fill="none"><rect x="12" y="12" width="40" height="26" rx="2" stroke="currentColor" stroke-width="2"/><path d="M6 48h52l-4 6H10z" stroke="currentColor" stroke-width="2"/></svg>
+            <span class="category-tile__tag">Estaciones para</span>
+            <div class="category-tile__body"><h4>Productividad</h4><p>PC's y Notebooks</p></div>
+          </a>
+          <a href="productos.html?cat=Teclados" class="category-tile category-tile--4">
+            <svg class="category-tile__icon" viewBox="0 0 64 64" fill="none"><rect x="6" y="18" width="52" height="30" rx="4" stroke="currentColor" stroke-width="2"/><rect x="12" y="24" width="6" height="6" fill="currentColor"/><rect x="21" y="24" width="6" height="6" fill="currentColor"/><rect x="30" y="33" width="18" height="6" fill="currentColor"/></svg>
+            <span class="category-tile__tag">Potencia</span>
+            <div class="category-tile__body"><h4>Gaming</h4><p>Máximo rendimiento</p></div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATÁLOGO COMPLETO -->
+    <section class="page-section page-section--tight">
+      <div class="container">
+        <div class="section-header" style="text-align:left;">
+          <span class="section-eyebrow">+18 productos disponibles</span>
+          <h2 class="section-title">Catálogo Completo TecnoRosita</h2>
+        </div>
+        <div class="carousel" id="allProductsCarousel"></div>
+      </div>
+    </section>
+
+    <!-- PRODUCTOS DESTACADOS -->
+    <section class="page-section page-section--tight">
+      <div class="container">
+        <div class="section-header" style="text-align:left;">
+          <span class="section-eyebrow">Selección TecnoRosita</span>
+          <h2 class="section-title">Ofertas Destacadas</h2>
+        </div>
+        <div class="carousel" id="featuredCarousel"></div>
+      </div>
+    </section>
+
+        <section class="page-section page-section--tight" aria-label="Publicidad">
+      <div class="container">
+        <a href="productos.html?cat=Accesorios" class="ad-banner ad-banner--accesorios">
+          <div class="ad-banner__content">
+            <span class="ad-banner__badge">Hasta 30% dcto.</span>
+            <h3>Semana del Accesorio</h3>
+            <p>Controles, hubs, SSD, cargadores y luces LED.</p>
+            <span class="btn btn--gold">Ver accesorios</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+        <section class="page-section page-section--tight">
+      <div class="container">
+        <div class="section-header" style="text-align:left;">
+          <span class="section-eyebrow">Mundo accesorios</span>
+          <h2 class="section-title">Todo para tu escritorio</h2>
+        </div>
+        <div class="carousel" id="accessoriesCarousel"></div>
+      </div>
+    </section>
+
+    <!-- GRILLA PROMOCIONAL SECUNDARIA -->
+    <section class="page-section page-section--tight">
+      <div class="container">
+        <div class="promo-grid">
+          <a href="productos.html?cat=Monitores" class="promo-tile promo-tile--monitores" style="background:linear-gradient(135deg,rgba(14,26,36,.5),rgba(5,8,10,.6)),url('https://images.unsplash.com/photo-1593062096033-9a26b09da705?w=900&h=700&fit=crop&auto=format&q=80') center/cover no-repeat">
+            <div class="promo-tile__body">
+              <span>Todo en</span>
+              <h4>Monitores</h4>
+              <span class="promo-tile__price"><small>Desde</small>$249.990</span>
+            </div>
+          </a>
+          <div class="promo-grid__stack">
+            <a href="productos.html?cat=Teclados" class="promo-tile promo-tile--perifericos" style="background:linear-gradient(135deg,rgba(28,16,36,.4),rgba(5,8,10,.5)),url('https://images.unsplash.com/photo-1558002038-1055907df827?w=800&h=400&fit=crop&auto=format&q=80') center/cover no-repeat">
+              <div class="promo-tile__body">
+                <span>Periféricos</span>
+                <h4>Gamer</h4>
+                <span class="promo-tile__price"><small>Desde</small>$54.990</span>
+              </div>
+            </a>
+            <a href="productos.html?cat=Sillas" class="promo-tile promo-tile--sillas" style="position:relative;overflow:hidden">
+              <img src="https://images.pexels.com/photos/7915286/pexels-photo-7915286.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop" alt="Sillas y Escritorios Gaming" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;filter:brightness(.7)" loading="eager" />
+              <div class="promo-tile__body" style="position:relative;z-index:2">
+                <span>Sillas y</span>
+                <h4>Escritorios</h4>
+                <span class="promo-tile__price"><small>Desde</small>$279.990</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIDEO PROMOCIONAL -->
+    <section class="page-section page-section--tight promo-video">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">Experiencia TecnoRosita</span>
+          <h2 class="section-title">Vive el lujo gamer en movimiento</h2>
+        </div>
+        <div class="promo-video__frame">
+          <video controls muted loop playsinline preload="metadata">
+            <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" />
+            Tu navegador no soporta el elemento de video.
+          </video>
+        </div>
+        <p class="promo-video__caption">Video promocional institucional — Campaña "Domina el juego" 2026.</p>
+      </div>
+    </section>
+
+    <!-- ARMA TU SETUP GAMER -->
+    <section class="page-section page-section--tight">
+      <div class="container">
+        <div class="section-header" style="text-align:left;">
+          <span class="section-eyebrow">Teclados · Mouse · Sillas</span>
+          <h2 class="section-title">Arma tu Setup Gamer</h2>
+        </div>
+        <div class="carousel" id="setupCarousel"></div>
+      </div>
+    </section>
+
+    <!-- COMPONENTES Y ACCESORIOS -->
+    <section class="page-section page-section--tight">
+      <div class="container">
+        <div class="section-header" style="text-align:left;">
+          <span class="section-eyebrow">Componentes · Audio · Accesorios</span>
+          <h2 class="section-title">Potencia y Personaliza tu Equipo</h2>
+        </div>
+        <div class="carousel" id="comboCarousel"></div>
+      </div>
+    </section>
+
+    <!-- STREAMING Y CONECTIVIDAD -->
+    <section class="page-section page-section--tight">
+      <div class="container">
+        <div class="section-header" style="text-align:left;">
+          <span class="section-eyebrow">Streaming · Hogar Inteligente · Monitores</span>
+          <h2 class="section-title">Conecta, Transmite y Trabaja</h2>
+        </div>
+        <div class="carousel" id="streamingCarousel"></div>
+      </div>
+    </section>
+
+        <section class="page-section page-section--tight" aria-label="Publicidad streaming">
+      <div class="container">
+        <a href="productos.html?cat=Streaming" class="ad-banner ad-banner--streaming-wide">
+          <div class="ad-banner__content">
+            <span class="ad-banner__badge">Kit creador</span>
+            <h3>Empieza a transmitir hoy</h3>
+            <p>Cámara 4K, micrófono de estudio y soporte RGB.</p>
+            <span class="btn btn--outline">Ver streaming</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="page-section page-section--tight">
+      <div class="container">
+        <div class="cta-band">
+          <span class="section-eyebrow">Club TecnoRosita</span>
+          <h2>Accede a lanzamientos exclusivos antes que nadie</h2>
+          <p>Regístrate y sé el primero en enterarte de nuevas colecciones, drops limitados y descuentos privados.</p>
+          <a href="registro.html" class="btn btn--gold btn--lg">Crear Cuenta</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="site-footer"></footer>
+  <button type="button" class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+
+  <script src="js/data.js"></script>
+  <script src="js/imagenes.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/complementos.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/productos.js"></script>
+  <script src="js/carousel.js"></script>
+  <script src="js/home.js"></script>
+  <script src="js/experiencia.js"></script>
+  <script>initLayout("index.html");</script>
+</body>
+</html>
