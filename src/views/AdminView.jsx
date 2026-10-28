@@ -1,21 +1,23 @@
-import React, { useState } from 'react';
-import { Container, Form, Button, Table, Row, Col } from 'react-bootstrap';
-import { productosMock } from '../data/productos';
+import React, { useState, useEffect } from 'react';
+import { Container, Form, Button, Table, Row, Col, Badge } from 'react-bootstrap';
+import { getProductos, crearProducto, eliminarProducto } from '../data/productos'; 
 
 const AdminView = () => {
-  // Estado local para manejar la lista de productos
-  const [listaProductos, setListaProductos] = useState(productosMock);
+  const [listaProductos, setListaProductos] = useState([]);
   
-  // Estado para el formulario de nuevo producto
+
   const [nuevoProducto, setNuevoProducto] = useState({
     nombre: '',
     categoria: '',
-    precio: '',
-    stock: '',
+    precioTransferencia: '',
+    stockOnline: '',
     imagen: ''
   });
 
-  // Capturar lo que el usuario escribe en el formulario
+  useEffect(() => {
+    setListaProductos(getProductos());
+  }, []);
+
   const handleChange = (e) => {
     setNuevoProducto({
       ...nuevoProducto,
@@ -23,32 +25,32 @@ const AdminView = () => {
     });
   };
 
-  // Función para agregar un producto al catálogo
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!nuevoProducto.nombre || !nuevoProducto.precio) {
+    if (!nuevoProducto.nombre || !nuevoProducto.precioTransferencia) {
       alert('Por favor completa al menos el nombre y el precio.');
       return;
     }
 
-    const productoAgregado = {
-      id: listaProductos.length + 1,
+    
+    crearProducto({
       nombre: nuevoProducto.nombre,
       categoria: nuevoProducto.categoria || 'General',
-      precio: Number(nuevoProducto.precio),
-      stock: Number(nuevoProducto.stock) || 0,
+      precioTransferencia: Number(nuevoProducto.precioTransferencia),
+      stockOnline: Number(nuevoProducto.stockOnline) || 0,
       imagen: nuevoProducto.imagen || 'https://images.pexels.com/photos/1309766/pexels-photo-1309766.jpeg?auto=compress&cs=tinysrgb&w=800'
-    };
+    });
 
-    setListaProductos([...listaProductos, productoAgregado]);
-    setNuevoProducto({ nombre: '', categoria: '', precio: '', stock: '', imagen: '' });
+    setListaProductos(getProductos()); 
+    setNuevoProducto({ nombre: '', categoria: '', precioTransferencia: '', stockOnline: '', imagen: '' });
     alert('¡Producto agregado con éxito al catálogo!');
   };
 
-  // Función para eliminar un producto
   const handleDelete = (id) => {
-    const filtrados = listaProductos.filter(p => p.id !== id);
-    setListaProductos(filtrados);
+    if(window.confirm('¿Eliminar producto?')) {
+        eliminarProducto(id);
+        setListaProductos(getProductos());
+    }
   };
 
   return (
@@ -57,7 +59,7 @@ const AdminView = () => {
         Panel de Administración - Productos
       </h2>
 
-      {/* Formulario para agregar productos */}
+      
       <Form onSubmit={handleSubmit} className="bg-dark p-4 rounded shadow mb-5 border border-secondary">
         <h4 className="mb-3 text-warning">Añadir Nuevo Producto</h4>
         <Row className="mb-3">
@@ -82,7 +84,7 @@ const AdminView = () => {
                 name="categoria" 
                 value={nuevoProducto.categoria} 
                 onChange={handleChange} 
-                placeholder="Ej. Tarjetas de Video" 
+                placeholder="Ej. Componentes de PC" 
               />
             </Form.Group>
           </Col>
@@ -90,11 +92,11 @@ const AdminView = () => {
         <Row className="mb-3">
           <Col md={4}>
             <Form.Group>
-              <Form.Label>Precio ($ CLP)</Form.Label>
+              <Form.Label>Precio Transferencia ($ CLP)</Form.Label>
               <Form.Control 
                 type="number" 
-                name="precio" 
-                value={nuevoProducto.precio} 
+                name="precioTransferencia" 
+                value={nuevoProducto.precioTransferencia} 
                 onChange={handleChange} 
                 placeholder="Ej. 350000" 
                 required
@@ -103,11 +105,11 @@ const AdminView = () => {
           </Col>
           <Col md={4}>
             <Form.Group>
-              <Form.Label>Stock</Form.Label>
+              <Form.Label>Stock Online</Form.Label>
               <Form.Control 
                 type="number" 
-                name="stock" 
-                value={nuevoProducto.stock} 
+                name="stockOnline" 
+                value={nuevoProducto.stockOnline} 
                 onChange={handleChange} 
                 placeholder="Ej. 10" 
               />
@@ -131,7 +133,7 @@ const AdminView = () => {
         </Button>
       </Form>
 
-      {/* Tabla de administración de productos existentes */}
+      
       <h4 className="mb-3 text-warning">Inventario Actual</h4>
       <Table striped bordered hover variant="dark" responsive className="align-middle">
         <thead>
@@ -147,11 +149,11 @@ const AdminView = () => {
         <tbody>
           {listaProductos.map((prod) => (
             <tr key={prod.id}>
-              <td>{prod.id}</td>
+              <td><Badge bg="secondary">#{prod.id}</Badge></td>
               <td>{prod.nombre}</td>
               <td>{prod.categoria}</td>
-              <td>${prod.precio.toLocaleString('es-CL')}</td>
-              <td>{prod.stock}</td>
+              <td>${(prod.precioTransferencia || 0).toLocaleString('es-CL')}</td>
+              <td>{prod.stockOnline || 0}</td>
               <td>
                 <Button variant="danger" size="sm" onClick={() => handleDelete(prod.id)}>
                   Eliminar

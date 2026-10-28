@@ -1,80 +1,51 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams, Link } from 'react-router-dom';
+import { getProductoById } from '../data/productos';
 import { Container, Row, Col, Button, Badge } from 'react-bootstrap';
-import { useParams, Link, useNavigate } from 'react-router-dom';
-import { productosMock } from '../data/productos';
-import { getCart, saveCart } from '../data/ventasService';
 
 const ProductDetailView = () => {
   const { id } = useParams();
-  const navigate = useNavigate();
-  
-  const producto = productosMock.find((p) => p.id === parseInt(id));
+  const [producto, setProducto] = useState(null);
 
-  if (!producto) {
-    return (
-      <Container className="text-center mt-5 text-white">
-        <h2>Producto no encontrado</h2>
-        <Button as={Link} to="/" variant="outline-warning" className="mt-3">Volver al Catálogo</Button>
-      </Container>
-    );
-  }
+  useEffect(() => {
+    const data = getProductoById(id);
+    setProducto(data);
+  }, [id]);
 
-  
-  const handleAddToCart = () => {
-    const cart = getCart();
-    const existingProduct = cart.find(item => item.id === producto.id);
-    
-    if (existingProduct) {
-      existingProduct.qty += 1;
-    } else {
-      cart.push({ ...producto, qty: 1 });
-    }
-    
-    saveCart(cart);
-    navigate('/cart'); 
-  };
+  if (!producto) return <h2 className="text-center mt-5 text-white">Producto no encontrado</h2>;
 
   return (
-    <Container className="mt-5 text-white">
-      <Button as={Link} to="/" variant="outline-light" className="mb-4">
-        ← Volver al Catálogo
-      </Button>
-      <Row className="align-items-center bg-dark p-4 rounded shadow border border-secondary">
-        <Col md={6} className="text-center">
+    <Container className="pt-4 text-white">
+      <div className="mb-4">
+        <Link to="/" className="text-warning text-decoration-none">Home</Link> / 
+        <Link to="/productos" className="text-warning text-decoration-none mx-2">Productos</Link> / 
+        <span className="text-secondary mx-2">{producto.categoria}</span> / 
+        <span className="text-light mx-2">{producto.nombre}</span>
+      </div>
+
+      <Row className="page-section page-section--tight align-items-center">
+        <Col md={6}>
           <img 
             src={producto.imagen} 
             alt={producto.nombre} 
-            className="img-fluid rounded shadow" 
-            style={{ maxHeight: '350px', objectFit: 'cover', width: '100%' }} 
+            className="img-fluid rounded shadow-lg" 
+            style={{ border: '1px solid #d4af37' }} 
           />
         </Col>
-        <Col md={6}>
-          <span className="text-muted text-uppercase" style={{ letterSpacing: '2px', fontSize: '0.85rem' }}>
-            {producto.categoria}
-          </span>
-          <h1 className="fw-bold my-2" style={{ color: '#e8b74d' }}>{producto.nombre}</h1>
-          <h3 className="text-warning mb-3">${producto.precio.toLocaleString('es-CL')}</h3>
+        <Col md={6} className="p-4">
+          <Badge bg="warning" text="dark" className="mb-2 fs-6">{producto.marca}</Badge>
+          <h1 style={{ fontFamily: 'Orbitron, sans-serif' }}>{producto.nombre}</h1>
+          <p className="text-secondary mb-4">SKU: {producto.sku} | Part Number: {producto.partNumber}</p>
           
-          <p className="text-light mb-4">
-            Disfruta del máximo rendimiento con este componente de alta gama para tu setup gamer. Producto certificado con garantía TecnoRosita.
-          </p>
-
-          <div className="mb-4">
-            {producto.stock === 0 ? (
-              <Badge bg="danger" className="fs-6 p-2">Agotado</Badge>
-            ) : (
-              <Badge bg="success" className="fs-6 p-2">Stock disponible: {producto.stock} unidades</Badge>
-            )}
-          </div>
-
-          <Button 
-            variant={producto.stock === 0 ? "secondary" : "warning"} 
-            size="lg" 
-            className="w-100 fw-bold text-dark"
-            disabled={producto.stock === 0}
-            onClick={handleAddToCart} 
-          >
-            {producto.stock === 0 ? "Sin Stock" : "Añadir al Carrito"}
+          <h2 className="text-success fw-bold mb-4">
+            ${producto.precioTransferencia.toLocaleString('es-CL')} <small className="text-light fs-6">Precio Transferencia</small>
+          </h2>
+          
+          <p className="fs-5">{producto.descripcion}</p>
+          <p><strong>Stock Online:</strong> {producto.stockOnline} unidades</p>
+          
+          <Button variant="warning" size="lg" className="mt-3 w-100 fw-bold">
+            Añadir al carrito
           </Button>
         </Col>
       </Row>

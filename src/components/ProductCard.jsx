@@ -1,66 +1,77 @@
 import React from 'react';
 import { Card, Button, Badge } from 'react-bootstrap';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { getCart, saveCart } from '../data/ventasService';
 
-const ProductCard = ({ producto }) => {
-  const navigate = useNavigate();
+export default function ProductCard({ producto }) {
+    const navigate = useNavigate();
 
-  
-  const handleAddToCart = () => {
-    const cart = getCart();
-    const existingProduct = cart.find(item => item.id === producto.id);
-    
-    if (existingProduct) {
-      existingProduct.qty += 1;
-    } else {
-      cart.push({ ...producto, qty: 1 });
-    }
-    
-    saveCart(cart);
-    navigate('/cart');
-  };
+    const stockActual = producto.stockOnline !== undefined ? producto.stockOnline : (producto.stock || 0);
+    const sinStock = stockActual <= 0;
 
-  return (
-    <Card className="h-100 shadow-sm border-0" style={{ backgroundColor: '#1a1a22', color: '#eceae3' }}>
-      <Card.Img variant="top" src={producto.imagen} style={{ height: '200px', objectFit: 'cover' }} />
-      <Card.Body className="d-flex flex-column">
-        <Card.Text className="text-muted mb-1" style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '2px' }}>
-          {producto.categoria}
-        </Card.Text>
-        <Card.Title className="fw-bold fs-5 mb-3">{producto.nombre}</Card.Title>
-        <Card.Text className="fw-bold fs-4" style={{ color: '#e8b74d' }}>
-          ${producto.precio.toLocaleString('es-CL')}
-        </Card.Text>
-        
-        <div className="mb-3">
-          {producto.stock === 0 ? (
-            <Badge bg="danger">Agotado</Badge>
-          ) : (
-            <Badge bg="success">Stock disponible: {producto.stock}</Badge>
-          )}
-        </div>
+    const handleAddToCart = () => {
+        if (sinStock) return;
+        const cart = getCart();
+        const existing = cart.find(item => item.id === producto.id);
+        if (existing) {
+            existing.qty += 1;
+        } else {
+            cart.push({ ...producto, qty: 1 });
+        }
+        saveCart(cart);
+        alert('Producto añadido al carrito con éxito'); 
+    };
 
-        <Button 
-          as={Link} 
-          to={`/producto/${producto.id}`} 
-          variant="outline-light" 
-          className="mb-2 w-100 fw-bold"
-        >
-          Ver Detalle
-        </Button>
+    return (
+        <Card className="bg-dark text-white shadow-sm h-100 border-secondary">
+            <Card.Img 
+                variant="top" 
+                src={producto.imagen} 
+                style={{ height: '200px', objectFit: 'cover' }} 
+                alt={producto.nombre}
+                onError={(e) => {
+                    e.target.onerror = null; 
+                    e.target.src = 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=600&q=80';
+                }}
+            />
+            
+            <Card.Body className="d-flex flex-column">
+                
+                <div className="text-muted small mb-1" style={{ letterSpacing: '1px' }}>
+                    {producto.categoria || 'Teclados'}
+                </div>
+                
+                <Card.Title className="fs-6 fw-bold mb-3" style={{ minHeight: '48px' }}>
+                    {producto.nombre}
+                </Card.Title>
+                
+                <h4 className="text-warning mb-3">
+                    ${(producto.precioTransferencia || producto.precio || 0).toLocaleString('es-CL')}
+                </h4>
+                
+                <div className="mb-3">
+                    <Badge bg={sinStock ? 'danger' : 'success'}>
+                        {sinStock ? 'Agotado' : `Stock disponible: ${stockActual}`}
+                    </Badge>
+                </div>
 
-        <Button 
-          variant={producto.stock === 0 ? "secondary" : "outline-warning"} 
-          className="mt-auto w-100 fw-bold"
-          disabled={producto.stock === 0}
-          onClick={handleAddToCart}
-        >
-          {producto.stock === 0 ? "Sin Stock" : "Añadir al carrito"}
-        </Button>
-      </Card.Body>
-    </Card>
-  );
-};
-
-export default ProductCard;
+                <div className="mt-auto d-grid gap-2">
+                    <Button 
+                        variant="outline-light" 
+                        onClick={() => navigate(`/producto/${producto.id}`)}
+                    >
+                        Ver Detalle
+                    </Button>
+                    <Button 
+                        variant={sinStock ? 'secondary' : 'warning'} 
+                        className={`fw-bold ${sinStock ? 'text-white' : 'text-dark'}`}
+                        onClick={handleAddToCart}
+                        disabled={sinStock}
+                    >
+                        {sinStock ? 'Sin Stock' : 'Añadir al carrito'}
+                    </Button>
+                </div>
+            </Card.Body>
+        </Card>
+    );
+}

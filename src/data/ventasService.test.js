@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-import { getCart, saveCart, clearCart, ventasService } from './ventasService';
+import { getCart, saveCart, clearCart, ventasService } from '../data/ventasService';
 
 
 const localStorageMock = (function() {
@@ -13,13 +13,13 @@ const localStorageMock = (function() {
 })();
 Object.defineProperty(global, 'localStorage', { value: localStorageMock });
 
-describe('Pruebas del Módulo ventasService', () => {
-    
+describe('Pruebas Unitarias - Módulo ventasService', () => {
     
     beforeEach(() => {
         localStorage.clear();
     });
 
+    
     it('1. Debe guardar, obtener y limpiar el carrito correctamente', () => {
         const mockCart = [{ id: 1, nombre: 'Monitor', precio: 150000, qty: 1 }];
         

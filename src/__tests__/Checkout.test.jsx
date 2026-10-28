@@ -2,7 +2,6 @@ import React from 'react';
 import '@testing-library/jest-dom';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
-import { describe, it, expect, beforeEach } from 'vitest';
 import CheckoutView from '../views/CheckoutView';
 
 const renderWithRouter = (component) => render(<BrowserRouter>{component}</BrowserRouter>);
